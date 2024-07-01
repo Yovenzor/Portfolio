@@ -31,4 +31,4 @@ To know more... just hit me on [Linkedin](https://www.linkedin.com/in/yovenzor-s
 
 Just this for NOW, coming soon more feaatures!
 
-<h4 align="center">Created with ❤️ by Yovenzor Singh</h4># Portfolio
+<h4 align="center">Created with ❤️ by Yovenzor Singh</h4>
