@@ -1,8 +1,8 @@
-# [Yovenzor Singh Portfolio](https://yovenzor.github.io/Portfolio)
+# [My Portfolio](https://yovenzor.github.io/Portfolio)
 
 ## 📸 Screenshot
 
-![816shots_so](https://github.com/Yovenzor/Portfolio/assets/102180213/a2b26c0a-1823-4f9f-9372-2d3415f7e449)
+![image](https://github.com/Yovenzor/Portfolio/assets/102180213/4b2648c2-b74a-481a-8828-19aac1085d64)
 
 ## 👋 About Me 
 I'm a Web Developer from Catalonia, Spain 📍🇪🇸
