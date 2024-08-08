@@ -22,13 +22,6 @@ To know more... just hit me on [Linkedin](https://www.linkedin.com/in/yovenzor-s
 [![Twitter Badge](https://img.shields.io/badge/Twitter-blue?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/YovenzorS)
 [![Discord Badge](https://img.shields.io/badge/Discord-5865F2.svg?style=for-the-badge&logo=Discord&logoColor=white)](https://discord.com/invite/2Yk6JPVFQa)
 
-
-## 🛠 Coming Features
-
-- Customized cursor
-- Responsive Design for mobile phones
-- Light/Dark Toggle
-
 Just this for NOW, coming soon more feaatures!
 
 <h4 align="center">Created with ❤️ by Yovenzor Singh</h4>
