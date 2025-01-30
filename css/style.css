@@ -102,7 +102,6 @@ nav {
 }
 
 .nav-items {
-    
     display: flex;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
     transition: all 0.2s ease-in-out;
@@ -701,4 +700,78 @@ h2 {
     #contact-form button {
         font-size: 0.9rem;
     }
+}
+
+/* ---------- LIGHT MODE ---------- */
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--orange);
+}
+
+body.light-theme {
+    --main-color: white;
+    --color-text: #1a202c;
+    --button-color: #2c7a7b;
+    --button-color-hover: #38b2ac;
+}
+
+body.light-theme p, button {
+    color: black;
+}
+
+body.light-theme .project-link{
+    color: #000;
+    background-color: rgba(255, 255, 255);
+}
+
+body.light-theme .social-icon:nth-of-type(3) i {
+    color: black;
+}
+
+.light-theme .nav-container nav {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .project-card {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .project-card.blue {
+    background: linear-gradient(135deg, #8484f8, #ccc);
+}
+.light-theme .project-card.orange {
+    background: linear-gradient(135deg, #f3c784, #ccc);
+}
+.light-theme .project-card.cyan {
+    background: linear-gradient(135deg, #89f3f3, #ccc);
+}
+.light-theme .project-card.red {
+    background: linear-gradient(135deg, #f17c7c, #ccc);
+}
+.light-theme .project-card.purple-light {
+    background: linear-gradient(135deg, #bc80f5, #ccc);
+}
+
+.light-theme #contact-form input,
+.light-theme #contact-form textarea {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-text);
+}
+
+.light-theme #contact-form input:focus,
+.light-theme #contact-form textarea:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .footer {
+    background-color: var(--main-color);
 }
