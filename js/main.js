@@ -73,3 +73,39 @@ document.addEventListener('click', (e) => {
         toggleMenu();
     }
 });
+
+
+// LIGHT MODE
+
+// Wait for the DOM to be fully loaded before running the script
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("themeToggle")
+    if (themeToggle) {
+    const themeIcon = themeToggle.querySelector("i")
+
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme")
+        if (document.body.classList.contains("light-theme")) {
+        themeIcon.classList.remove("ti-sun")
+        themeIcon.classList.add("ti-moon")
+        } else {
+        themeIcon.classList.remove("ti-moon")
+        themeIcon.classList.add("ti-sun")
+        }
+
+        if (document.body.classList.contains("light-theme")) {
+        localStorage.setItem("theme", "light")
+        } else {
+        localStorage.setItem("theme", "dark")
+        }
+    })
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme")
+    if (savedTheme === "light") {
+        document.body.classList.add("light-theme")
+        themeIcon.classList.remove("ti-sun")
+        themeIcon.classList.add("ti-moon")
+    }
+    }
+})
