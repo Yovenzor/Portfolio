@@ -5,7 +5,6 @@
 
 - 🌗 **Dark/Light Mode Toggle** – Seamlessly switch between dark and light themes for better accessibility.
 - 📱 **Responsive Design** – Fully optimized for all screen sizes, from mobile to desktop.
-- ⚡ **Fast & Lightweight** – Built with performance in mind to ensure quick loading times.
 
 ## 🔗 Installation
 
