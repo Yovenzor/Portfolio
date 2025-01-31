@@ -13,7 +13,7 @@
    ```bash
    git clone https://github.com/Yovenzor/Portfolio.git
 
-## Errors
+## Errors ⚠️
 - When the user loads the website, it takes a little of time to load the customized font. I'll try to fix this little bug ASAP.
 
 ## 🤝 Contributing
