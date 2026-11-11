@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-local-check",
+  "compatibility_date": "2026-11-11",
+  "main": "./sites/worker.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  }
+}

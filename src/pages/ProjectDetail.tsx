@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { useLanguage, useT } from "@/i18n";
-import { projectCad, projectDocs } from "@/content/site";
+import { projectCad, projectDocs, projectLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 /**
@@ -80,6 +80,7 @@ export default function ProjectDetail() {
 
   const st = t.projects.sectionTitles;
   const docUrl = projectDocs[project.slug];
+  const linkUrl = projectLinks[project.slug];
   const cadUrl = projectCad[project.slug];
   const meta = [
     { icon: Package, label: st.components, items: project.components },
@@ -244,6 +245,19 @@ export default function ProjectDetail() {
                               aria-hidden="true"
                             />
                           </button>
+                        ) : linkUrl ? (
+                          <a
+                            href={linkUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/doc mt-1.5 inline-flex items-center gap-1.5 text-sm font-medium text-brand outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring/60"
+                          >
+                            {t.projects.openProject}
+                            <ArrowUpRight
+                              className="size-3.5 transition-transform group-hover/doc:-translate-y-0.5 group-hover/doc:translate-x-0.5"
+                              aria-hidden="true"
+                            />
+                          </a>
                         ) : (
                           <p className="mt-1.5 text-sm text-muted-foreground/75">{t.projects.pendingDoc}</p>
                         )}

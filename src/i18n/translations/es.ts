@@ -157,11 +157,12 @@ export const es = {
     downloadDoc: "Descargar PDF",
     closeDoc: "Cerrar visor del PDF",
     downloadCad: "Descargar archivo de AutoCAD (.dwg)",
+    openProject: "Abrir el proyecto",
     viewProject: "Ver ficha técnica",
     comingSoonBadge: "Próximamente",
     comingSoonTitle: "Más proyectos en camino",
     comingSoonText:
-      "Ya van dos instalaciones documentadas al detalle. Estoy preparando las siguientes fichas con sus planos, cálculos y documentación.",
+      "Ya van tres proyectos documentados al detalle. Estoy preparando las siguientes fichas con sus planos, cálculos y documentación.",
     comingSoonFoot: "Nuevos casos técnicos · en preparación",
     backToProjects: "Volver a proyectos",
     notFoundTitle: "Proyecto no encontrado",
@@ -266,6 +267,36 @@ export const es = {
           "Empezar por el esquema de entradas y salidas ahorra reescribir el programa entero.",
           "Los temporizadores mal ajustados son la falla más común en mis primeras prácticas.",
           "Un buen comentario dentro del programa vale más que memoria.",
+        ],
+      },
+      {
+        slug: "rebt-pro",
+        category: "Herramienta con IA",
+        title: "REBT Pro — Memorias REBT generadas con IA",
+        summary:
+          "Herramienta web que redacta la memoria técnica que exige el REBT: rellenas los datos de la instalación y obtienes un PDF listo para entregar al inspector.",
+        overview:
+          "REBT Pro nace de un problema real del sector: en España, una instalación eléctrica de baja tensión necesita su memoria técnica —con los cálculos y la redacción que revisa el inspector— y redactarla a mano consume horas en cada proyecto. La herramienta guía al usuario con un formulario, recoge los datos de la instalación, redacta el documento con ayuda de IA y lo exporta en PDF para entregarlo a la siguiente persona del proceso.",
+        objective:
+          "Convertir un trámite lento y repetitivo en un formulario que devuelve el documento completo: misma estructura, mismos apartados y listo para el inspector, sin perder horas redactando.",
+        components: [
+          "Formulario guiado con los datos de la instalación",
+          "Redacción del documento asistida por IA",
+          "Datos y cálculos técnicos de la instalación",
+          "Exportación final a PDF",
+        ],
+        tools: ["IA para la redacción", "Desarrollo web (React)", "REBT — Reglamento Electrotécnico de Baja Tensión", "Generación de PDF"],
+        role: "Proyecto personal completo: la idea, el contenido técnico, el flujo del formulario y el desarrollo de la herramienta.",
+        process: [
+          "Detectar el problema: la memoria REBT se redacta a mano y se repite en cada instalación.",
+          "Definir qué datos necesita el inspector y ordenarlos en un formulario claro.",
+          "Conectar la redacción del documento con IA a partir de esos datos.",
+          "Exportar el PDF final y revisarlo con casos reales antes de publicarlo.",
+        ],
+        lessons: [
+          "Un formulario bien pensado pesa más que un buen prompt: con datos ordenados, el texto sale bien.",
+          "La IA redacta, pero la normativa y los cálculos siguen pidiendo criterio técnico.",
+          "Pensar en quien lee el documento —el inspector— cambia cómo se estructura.",
         ],
       },
     ],

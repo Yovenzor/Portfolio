@@ -151,11 +151,12 @@ export const de: Dictionary = {
     downloadDoc: "PDF herunterladen",
     closeDoc: "PDF-Ansicht schließen",
     downloadCad: "AutoCAD-Datei herunterladen (.dwg)",
+    openProject: "Projekt öffnen",
     viewProject: "Fallstudie ansehen",
     comingSoonBadge: "Demnächst",
     comingSoonTitle: "Weitere Projekte folgen",
     comingSoonText:
-      "Bisher zwei Installationen im Detail dokumentiert. Ich bereite die nächsten Blätter mit Plänen, Berechnungen und Dokumentation vor.",
+      "Bisher drei Projekte im Detail dokumentiert. Ich bereite die nächsten Blätter mit Plänen, Berechnungen und Dokumentation vor.",
     comingSoonFoot: "Neue Fallstudien · in Vorbereitung",
     backToProjects: "Zurück zu den Projekten",
     notFoundTitle: "Projekt nicht gefunden",
@@ -259,6 +260,36 @@ export const de: Dictionary = {
           "Die Ein-/Ausgangstabelle zuerst spart das Neuschreiben des gesamten Programms.",
           "Falsch eingestellte Zeitrelais waren der häufigste Fehler in meinen ersten Übungen.",
           "Ein gut kommentiertes Programm ist mehr wert als Gedächtnis.",
+        ],
+      },
+      {
+        slug: "rebt-pro",
+        category: "KI-Werkzeug",
+        title: "REBT Pro — REBT-Nachweise mit KI erstellt",
+        summary:
+          "Web-Tool, das die nach REBT geforderte technische Dokumentation schreibt: Daten der Anlage eingeben und ein PDF für den Prüfer erhalten.",
+        overview:
+          "REBT Pro entstand aus einem echten Problem der Branche: In Spanien braucht jede Niederspannungsanlage ihre technische Dokumentation — mit Berechnungen und Formulierungen, die der Prüfer kontrolliert — und sie von Hand zu schreiben kostet bei jedem Projekt Stunden. Das Tool führt durch ein Formular, erfasst die Anlagendaten, schreibt das Dokument mit KI-Unterstützung und exportiert es als PDF für die nächste Person im Ablauf.",
+        objective:
+          "Aus einem langsamen, sich wiederholenden Vorgang ein Formular machen, das das fertige Dokument liefert: gleiche Struktur, gleiche Abschnitte, bereit für den Prüfer — ohne stundenlanges Schreiben.",
+        components: [
+          "Geführtes Formular für die Anlagendaten",
+          "KI-unterstütztes Verfassen des Dokuments",
+          "Technische Daten und Berechnungen der Anlage",
+          "Abschließender PDF-Export",
+        ],
+        tools: ["KI für den Text", "Webentwicklung (React)", "REBT — spanische Niederspannungsverordnung", "PDF-Erzeugung"],
+        role: "Komplettes persönliches Projekt: Idee, technischer Inhalt, Ablauf des Formulars und Entwicklung des Tools.",
+        process: [
+          "Das Problem erkennen: REBT-Nachweise werden von Hand geschrieben und wiederholen sich bei jeder Anlage.",
+          "Festlegen, welche Daten der Prüfer braucht, und sie in ein klares Formular bringen.",
+          "Das Verfassen des Dokuments aus diesen Daten mit KI verbinden.",
+          "Das fertige PDF exportieren und vor der Veröffentlichung an echten Fällen prüfen.",
+        ],
+        lessons: [
+          "Ein gut durchdachtes Formular zählt mehr als ein guter Prompt: geordnete Daten ergeben guten Text.",
+          "Die KI formuliert, aber Norm und Berechnungen brauchen weiter technisches Urteil.",
+          "An die lesende Person — den Prüfer — zu denken, ändert den Aufbau des Dokuments.",
         ],
       },
     ],

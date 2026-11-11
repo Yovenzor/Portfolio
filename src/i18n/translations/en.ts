@@ -151,11 +151,12 @@ export const en: Dictionary = {
     downloadDoc: "Download PDF",
     closeDoc: "Close the PDF viewer",
     downloadCad: "Download the AutoCAD file (.dwg)",
+    openProject: "Open the project",
     viewProject: "View case study",
     comingSoonBadge: "Coming soon",
     comingSoonTitle: "More projects on the way",
     comingSoonText:
-      "Two installations documented in detail so far. I am preparing the next sheets with their drawings, calculations and documentation.",
+      "Three projects documented in detail so far. I am preparing the next sheets with their drawings, calculations and documentation.",
     comingSoonFoot: "New case studies · in preparation",
     backToProjects: "Back to projects",
     notFoundTitle: "Project not found",
@@ -260,6 +261,36 @@ export const en: Dictionary = {
           "Starting from the I/O table saves rewriting the whole program.",
           "Poorly tuned timers were the most common fault in my first exercises.",
           "A well-commented program beats memory every time.",
+        ],
+      },
+      {
+        slug: "rebt-pro",
+        category: "AI tool",
+        title: "REBT Pro — REBT reports generated with AI",
+        summary:
+          "A web tool that writes the technical report Spanish REBT rules require: enter the installation data and get a PDF ready to hand to the inspector.",
+        overview:
+          "REBT Pro comes from a real problem in the trade: in Spain every low-voltage electrical installation needs its technical report — calculations and wording included — for the inspector to review, and writing it by hand takes hours on every job. The tool guides the user through a form, collects the installation data, drafts the document with AI assistance and exports it as a PDF to hand over to the next person in the process.",
+        objective:
+          "Turn a slow, repetitive piece of paperwork into a form that returns the finished document: same structure, same sections, ready for the inspector, without hours of writing.",
+        components: [
+          "Guided form for the installation data",
+          "AI-assisted drafting of the document",
+          "Technical data and calculations for the installation",
+          "Final PDF export",
+        ],
+        tools: ["AI for drafting", "Web development (React)", "REBT — Spanish Low-Voltage Electrotechnical Regulation", "PDF generation"],
+        role: "Complete personal project: the idea, the technical content, the form flow and the tool's development.",
+        process: [
+          "Spotting the problem: REBT reports are written by hand and repeated on every installation.",
+          "Defining which data the inspector needs and ordering it into a clear form.",
+          "Connecting the document drafting to AI from that data.",
+          "Exporting the final PDF and reviewing it against real cases before publishing.",
+        ],
+        lessons: [
+          "A well-designed form matters more than a clever prompt: ordered input produces good text.",
+          "The AI drafts, but the regulation and the calculations still need technical judgement.",
+          "Thinking about who reads the document — the inspector — changes how it is structured.",
         ],
       },
     ],

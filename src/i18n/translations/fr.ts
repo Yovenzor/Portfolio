@@ -152,11 +152,12 @@ export const fr: Dictionary = {
     downloadDoc: "Télécharger le PDF",
     closeDoc: "Fermer la visionneuse du PDF",
     downloadCad: "Télécharger le fichier AutoCAD (.dwg)",
+    openProject: "Ouvrir le projet",
     viewProject: "Voir la fiche technique",
     comingSoonBadge: "Bientôt disponible",
     comingSoonTitle: "D'autres projets arrivent",
     comingSoonText:
-      "Déjà deux installations documentées en détail. Je prépare les prochaines fiches avec leurs plans, calculs et documentation.",
+      "Déjà trois projets documentés en détail. Je prépare les prochaines fiches avec leurs plans, calculs et documentation.",
     comingSoonFoot: "Nouveaux dossiers techniques · en préparation",
     backToProjects: "Retour aux projets",
     notFoundTitle: "Projet introuvable",
@@ -261,6 +262,36 @@ export const fr: Dictionary = {
           "Partir de la table entrées-sorties évite de réécrire tout le programme.",
           "Les temporisations mal réglées étaient l'erreur la plus fréquente de mes premiers essais.",
           "Un programme bien commenté vaut mieux que la mémoire.",
+        ],
+      },
+      {
+        slug: "rebt-pro",
+        category: "Outil d'IA",
+        title: "REBT Pro — Mémoires REBT générées par IA",
+        summary:
+          "Outil web qui rédige la note technique exigée par le REBT : vous saisissez les données de l'installation et obtenez un PDF prêt pour l'inspecteur.",
+        overview:
+          "REBT Pro vient d'un problème réel du métier : en Espagne, chaque installation électrique basse tension exige sa note technique — calculs et rédaction compris — que l'inspecteur contrôle, et la rédiger à la main prend des heures à chaque chantier. L'outil guide l'utilisateur avec un formulaire, recueille les données de l'installation, rédige le document avec l'aide de l'IA et l'exporte en PDF pour le transmettre à la personne suivante.",
+        objective:
+          "Transformer une démarche lente et répétitive en un formulaire qui renvoie le document complet : même structure, mêmes rubriques, prêt pour l'inspecteur, sans des heures de rédaction.",
+        components: [
+          "Formulaire guidé pour les données de l'installation",
+          "Rédaction du document assistée par IA",
+          "Données et calculs techniques de l'installation",
+          "Export final en PDF",
+        ],
+        tools: ["IA pour la rédaction", "Développement web (React)", "REBT — règlement électrotechnique basse tension espagnol", "Génération de PDF"],
+        role: "Projet personnel complet : l'idée, le contenu technique, le parcours du formulaire et le développement de l'outil.",
+        process: [
+          "Repérer le problème : la note REBT se rédige à la main et se répète à chaque installation.",
+          "Définir les données dont l'inspecteur a besoin et les organiser dans un formulaire clair.",
+          "Relier la rédaction du document à l'IA à partir de ces données.",
+          "Exporter le PDF final et le relire sur des cas réels avant publication.",
+        ],
+        lessons: [
+          "Un formulaire bien pensé vaut mieux qu'un bon prompt : des données ordonnées donnent un bon texte.",
+          "L'IA rédige, mais la norme et les calculs demandent toujours un jugement technique.",
+          "Penser à celui qui lit le document — l'inspecteur — change la façon de le structurer.",
         ],
       },
     ],

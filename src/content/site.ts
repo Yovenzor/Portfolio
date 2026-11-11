@@ -53,6 +53,14 @@ export const projectDocs: Record<string, string | undefined> = {
 };
 
 /**
+ * Live project URLs, keyed by project slug. A project with a URL but no PDF
+ * offers the link on its ficha instead of the "documentation pending" state.
+ */
+export const projectLinks: Record<string, string | undefined> = {
+  "rebt-pro": "https://rebtpro.freebuff.app/",
+};
+
+/**
  * AutoCAD source files (.dwg) offered as a download on the project ficha,
  * keyed by project slug.
  */

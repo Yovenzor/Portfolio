@@ -22,6 +22,7 @@ export function ProjectVisual({
     "automatizacion-plc",
     "casa-autocad",
     "panel-taller",
+    "rebt-pro",
   ];
 
   const accent = ACCENTS[slug] ?? "var(--brand)";
@@ -46,6 +47,7 @@ export function ProjectVisual({
         {slug === "casa-autocad" && <CadPlan accent={accent} />}
         {slug === "automatizacion-plc" && <PlcWiring accent={accent} />}
         {slug === "panel-taller" && <PanelWiring accent={accent} />}
+        {slug === "rebt-pro" && <RebtFlow accent={accent} />}
         {!known.includes(slug) && <SymbolSheet accent={accent} />}
       </svg>
       {caption && (
@@ -62,6 +64,7 @@ const ACCENTS: Record<string, string> = {
   "panel-taller": "var(--brand)",
   "automatizacion-plc": "var(--teal)",
   "casa-autocad": "var(--plum)",
+  "rebt-pro": "var(--signal)",
 };
 
 /** Hairline stroke colour for schematic line art (theme-aware). */
@@ -223,6 +226,69 @@ function PanelWiring({ accent }: { accent: string }) {
       {/* base labels */}
       <Label x={24} y={196} size={8.5}>-Q1 · -Q4 · X1 · -W1</Label>
       <path d="M24 208 H376" strokeDasharray="3 6" />
+    </g>
+  );
+}
+
+/** REBT Pro: form data → AI drafting → finished PDF report. */
+function RebtFlow({ accent }: { accent: string }) {
+  const rows = [
+    { y: 80, w: 46 },
+    { y: 108, w: 62 },
+    { y: 136, w: 34 },
+    { y: 164, w: 54 },
+  ];
+
+  return (
+    <g strokeWidth="1.4">
+      {/* data entry form */}
+      <rect x="16" y="44" width="104" height="144" rx="8" stroke={LINE} strokeWidth="1.3" />
+      <path d="M16 68 H120" strokeWidth="1.1" stroke={FAINT} />
+      <Label x={28} y={61} size={8}>DATOS</Label>
+      {rows.map((row, i) => (
+        <g key={`row${i}`}>
+          <rect x="28" y={row.y} width="80" height="14" rx="3" stroke={FAINT} strokeWidth="1.1" />
+          <path d={`M34 ${row.y + 7} h${row.w}`} stroke={accent} strokeWidth="1.4" />
+        </g>
+      ))}
+
+      {/* data flows into the model */}
+      <path d="M120 116 H158" strokeWidth="1.4" />
+      <path d="M154 112 l5 4 -5 4" strokeWidth="1.4" />
+
+      {/* AI core */}
+      <rect x="162" y="80" width="64" height="72" rx="10" stroke={accent} strokeWidth="1.6" />
+      {[[176, 94], [212, 94], [176, 138], [212, 138]].map(([x, y], i) => (
+        <g key={`n${i}`}>
+          <circle cx={x} cy={y} r="3.2" stroke={accent} strokeWidth="1.3" />
+          <path d={`M${x} ${y} L194 116`} stroke={FAINT} strokeWidth="1" strokeDasharray="3 3" />
+        </g>
+      ))}
+      <circle cx="194" cy="116" r="9" stroke={accent} strokeWidth="1.5" />
+      <Label x={188} y={119} size={7.5}>IA</Label>
+
+      {/* generated document */}
+      <path d="M226 116 H266" strokeWidth="1.4" />
+      <path d="M262 112 l5 4 -5 4" strokeWidth="1.4" />
+      <path d="M272 40 H346 L372 66 V196 H272 Z" strokeWidth="1.5" />
+      <path d="M346 40 V66 H372" strokeWidth="1.2" />
+      <Label x={282} y={58} size={9}>PDF</Label>
+      {[80, 92, 104, 116, 128, 140].map((y, i) => (
+        <path
+          key={`line${i}`}
+          d={`M284 ${y} H${i % 3 === 2 ? 342 : 358}`}
+          stroke={FAINT}
+          strokeWidth="1.2"
+        />
+      ))}
+
+      {/* inspector-ready stamp */}
+      <circle cx="350" cy="166" r="16" stroke={accent} strokeWidth="1.6" />
+      <path d="M342 166 l6 7 11 -14" stroke={accent} strokeWidth="1.8" />
+
+      {/* base labels */}
+      <Label x={16} y={202} size={8.5}>REBT · PDF</Label>
+      <path d="M16 208 H376" strokeDasharray="3 6" />
     </g>
   );
 }
