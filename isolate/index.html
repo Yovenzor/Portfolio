@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/assets/icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#f7f2e9" />
+
+  <!-- Apply the saved light/dark theme before first paint (no flash). -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("ys-portfolio-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        if (t === "dark") document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = t;
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute("content", t === "dark" ? "#2b241c" : "#f7f2e9");
+      } catch (e) { /* keep the default light theme */ }
+    })();
+  </script>
+
+  <title>Yovenzor Singh — Estudiante de Instalaciones Eléctricas y Automáticas</title>
+  <meta name="description"
+    content="Portfolio profesional de Yovenzor Singh, estudiante de segundo curso de Grado Medio de Instalaciones Eléctricas y Automáticas. Instalaciones eléctricas, automatismo y mantenimiento." />
+  <link rel="canonical" href="https://yovenzor.freebuff.app/" />
+
+  <!-- hreflang alternates are maintained dynamically by src/lib/seo.ts -->
+  <link rel="alternate" hreflang="es" href="https://yovenzor.freebuff.app/" />
+  <link rel="alternate" hreflang="x-default" href="https://yovenzor.freebuff.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Yovenzor Singh" />
+  <meta property="og:title" content="Yovenzor Singh — Estudiante de Instalaciones Eléctricas y Automáticas" />
+  <meta property="og:description"
+    content="Instalaciones eléctricas, automatismo y mantenimiento. Estudiante de CFGM IEA en Barcelona, abierto a oportunidades formativas." />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:url" content="https://yovenzor.freebuff.app/" />
+  <meta property="og:image" content="https://yovenzor.freebuff.app/assets/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt"
+    content="Vista previa del portfolio de Yovenzor Singh — instalaciones eléctricas y automatización" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://yovenzor.freebuff.app/assets/og-cover.jpg" />
+  <meta name="twitter:image:alt"
+    content="Vista previa del portfolio de Yovenzor Singh — instalaciones eléctricas y automatización" />
+  <meta name="twitter:title" content="Yovenzor Singh — Estudiante de Instalaciones Eléctricas y Automáticas" />
+  <meta name="twitter:description"
+    content="Instalaciones eléctricas, automatismo y mantenimiento. Estudiante de CFGM IEA en Barcelona." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-nwkTs3Qa.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/react-vendor-DeJVBK9P.js">
+  <link rel="modulepreload" crossorigin href="/assets/framer-motion-zpfmNkcX.js">
+  <link rel="modulepreload" crossorigin href="/assets/radix-ui-B2gyP-dq.js">
+  <link rel="modulepreload" crossorigin href="/assets/charts-5QiMWGdj.js">
+  <link rel="modulepreload" crossorigin href="/assets/forms-CSZ-UuGw.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-3x5qcscm.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Yovenzor Singh — Portfolio",
+  "short_name": "Yovenzor Singh",
+  "description": "Portfolio profesional de Yovenzor Singh, estudiante de Instalaciones Eléctricas y Automáticas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0c0e",
+  "theme_color": "#0b0c0e",
+  "icons": [
+    {
+      "src": "/assets/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
