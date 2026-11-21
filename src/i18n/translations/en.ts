@@ -42,7 +42,7 @@ export const en: Dictionary = {
 
   about: {
     label: "About me",
-    title: "A technician in training, curious by nature",
+    title: "An electrician in training",
     lead: "I am learning the trade through practice: how a safe electrical installation is designed, built and maintained.",
     paragraphs: [
       "I am in my second year of the Intermediate Vocational Training programme in Electrical Installation and Automatic Systems at Jesuïtes El Clot, Barcelona. Every week I combine classroom theory with hands-on work in the workshop.",
@@ -152,6 +152,7 @@ export const en: Dictionary = {
     closeDoc: "Close the PDF viewer",
     downloadCad: "Download the AutoCAD file (.dwg)",
     openProject: "Open the project",
+    projectLink: "Project link",
     viewProject: "View case study",
     comingSoonBadge: "Coming soon",
     comingSoonTitle: "More projects on the way",
@@ -399,6 +400,8 @@ export const en: Dictionary = {
     note: "A personal website, continuously evolving.",
     rights: "© 2026 Yovenzor Singh. All rights reserved.",
     backToTop: "Back to top",
+    explore: "Explore",
+    more: "More",
   },
 
   common: {

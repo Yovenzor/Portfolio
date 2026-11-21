@@ -4,7 +4,6 @@ import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ProjectVisual } from "@/components/ProjectVisual";
-import { ProjectSoon } from "@/components/ProjectSoon";
 import { useT } from "@/i18n";
 
 /**
@@ -25,9 +24,8 @@ export function Projects() {
       />
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-        {/* The PLC ficha is kept out of the gallery for now: its slot shows
-            an honest coming-soon card instead (the data still exists — drop
-            this filter to bring the card back). */}
+        {/* The PLC ficha is kept out of the gallery for now (the data still
+            exists in the dictionaries — drop this filter to bring it back). */}
         {t.projects.items
           .filter((project) => project.slug !== "automatizacion-plc")
           .map((project, index) => (
@@ -67,9 +65,6 @@ export function Projects() {
             </Link>
           </Reveal>
         ))}
-        <Reveal delay={0.12} as="article" className="h-full">
-          <ProjectSoon />
-        </Reveal>
       </div>
     </Section>
   );

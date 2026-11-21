@@ -42,7 +42,7 @@ export const pt: Dictionary = {
 
   about: {
     label: "Sobre mim",
-    title: "Técnico em formação, curioso por natureza",
+    title: "Eletricista em formação",
     lead: "Estou a aprender o ofício na prática: como se projeta, monta e mantém uma instalação elétrica segura.",
     paragraphs: [
       "Frequento o segundo ano de Formação Profissional Intermédia em Instalações Elétricas e Sistemas Automáticos no Jesuïtes El Clot, Barcelona. Todas as semanas combino teoria na sala de aula com trabalho prático na oficina.",
@@ -152,6 +152,7 @@ export const pt: Dictionary = {
     closeDoc: "Fechar o visualizador do PDF",
     downloadCad: "Descarregar o ficheiro AutoCAD (.dwg)",
     openProject: "Abrir o projeto",
+    projectLink: "Ligação do projeto",
     viewProject: "Ver ficha técnica",
     comingSoonBadge: "Em breve",
     comingSoonTitle: "Mais projetos a caminho",
@@ -399,6 +400,8 @@ export const pt: Dictionary = {
     note: "Um site pessoal em construção contínua.",
     rights: "© 2026 Yovenzor Singh. Todos os direitos reservados.",
     backToTop: "Voltar ao topo",
+    explore: "Explorar",
+    more: "Mais",
   },
 
   common: {

@@ -57,7 +57,7 @@ export const projectDocs: Record<string, string | undefined> = {
  * offers the link on its ficha instead of the "documentation pending" state.
  */
 export const projectLinks: Record<string, string | undefined> = {
-  "rebt-pro": "https://rebtpro.freebuff.app/",
+  "rebt-pro": "https://rebtpro.freebuff.page/",
 };
 
 /**

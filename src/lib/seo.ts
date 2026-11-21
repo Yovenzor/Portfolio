@@ -13,7 +13,7 @@ export interface SeoInput {
   description: string;
 }
 
-const SITE_URL = "https://yovenzor.freebuff.app/";
+const SITE_URL = "https://yovenzor.freebuff.page/";
 const LOCALES: Record<string, string> = {
   es: "es",
   en: "en",

@@ -42,7 +42,7 @@ export const de: Dictionary = {
 
   about: {
     label: "Über mich",
-    title: "Azubi mit Technikinteresse und Neugier",
+    title: "Elektriker in Ausbildung",
     lead: "Ich lerne das Handwerk in der Praxis: Wie eine sichere Elektroinstallation geplant, gebaut und gewartet wird.",
     paragraphs: [
       "Ich besuche das zweite Jahr der mittleren beruflichen Ausbildung in Elektroinstallationen und automatischen Systemen am Jesuïtes El Clot in Barcelona. Jede Woche kombiniere ich Theorie im Klassenraum mit Praxisarbeit in der Werkstatt.",
@@ -152,6 +152,7 @@ export const de: Dictionary = {
     closeDoc: "PDF-Ansicht schließen",
     downloadCad: "AutoCAD-Datei herunterladen (.dwg)",
     openProject: "Projekt öffnen",
+    projectLink: "Projektlink",
     viewProject: "Fallstudie ansehen",
     comingSoonBadge: "Demnächst",
     comingSoonTitle: "Weitere Projekte folgen",
@@ -398,6 +399,8 @@ export const de: Dictionary = {
     note: "Eine persönliche Website in ständigem Ausbau.",
     rights: "© 2026 Yovenzor Singh. Alle Rechte vorbehalten.",
     backToTop: "Nach oben",
+    explore: "Entdecken",
+    more: "Mehr",
   },
 
   common: {

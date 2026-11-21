@@ -338,6 +338,6 @@ description, Open Graph, `hreflang`) is updated per language by `src/lib/seo.ts`
 ## Deployment
 
 - **Vercel:** `vercel.json` provides the SPA rewrite (`/(.*) → /index.html`).
-- **Netlify / similar:** `public/_redirects` provides the same fallback.
+- **Netlify / similar:** `netlify/_redirects` provides the same fallback (kept out of `public/` because Cloudflare Workers assets reject that rule as an infinite redirect; on Freebuff Sites the SPA fallback comes from `sites.manifest.json`).
 - Set `VITE_CONVEX_URL` to the production Convex deployment and push the Convex
   functions (`npx convex deploy`).

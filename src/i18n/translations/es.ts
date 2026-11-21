@@ -48,7 +48,7 @@ export const es = {
 
   about: {
     label: "Sobre mí",
-    title: "Técnico en formación, curioso por naturaleza",
+    title: "Electricista en formación",
     lead: "Estoy aprendiendo el oficio desde la práctica: cómo se diseña, se monta y se mantiene una instalación eléctrica segura.",
     paragraphs: [
       "Curso segundo grado medio de Grado Medio de Instalaciones Eléctricas y Automáticas en Jesuïtes El Clot, Barcelona. Cada semana combino teoría en el aula y trabajo práctico en el taller.",
@@ -158,6 +158,7 @@ export const es = {
     closeDoc: "Cerrar visor del PDF",
     downloadCad: "Descargar archivo de AutoCAD (.dwg)",
     openProject: "Abrir el proyecto",
+    projectLink: "Enlace del proyecto",
     viewProject: "Ver ficha técnica",
     comingSoonBadge: "Próximamente",
     comingSoonTitle: "Más proyectos en camino",
@@ -405,6 +406,8 @@ export const es = {
     note: "Sitio web personal en construcción continua.",
     rights: "© 2026 Yovenzor Singh. Todos los derechos reservados.",
     backToTop: "Volver arriba",
+    explore: "Explorar",
+    more: "Más",
   },
 
   common: {

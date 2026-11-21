@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, Download, FileText, XIcon, Ruler, Wrench, Package, UserRound, Target, ListChecks, BookOpen } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Download, ExternalLink, FileText, XIcon, Ruler, Wrench, Package, UserRound, Target, ListChecks, BookOpen } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
@@ -221,11 +221,37 @@ export default function ProjectDetail() {
               </Reveal>
 
               <Reveal>
-                <div
-                  className={cn(
-                    "overflow-hidden rounded-2xl border border-dashed border-line-strong bg-tint",
-                  )}
-                >
+                {linkUrl && !docUrl ? (
+                  /* A live project without a PDF: show a plain outbound link card
+                     so it never reads like a document that is about to open. */
+                  <a
+                    href={linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center gap-3 rounded-xl border border-line bg-card p-5 outline-none transition-colors hover:border-line-strong focus-visible:ring-2 focus-visible:ring-ring/60"
+                  >
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-brand/30 bg-brand/10 text-brand">
+                      <ExternalLink className="size-4" aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                        {t.projects.projectLink}
+                      </span>
+                      <span className="mt-1 block truncate text-sm font-medium text-foreground/85 transition-colors group-hover/link:text-brand">
+                        {new URL(linkUrl).hostname.replace(/^www\./, "")}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      className="size-4 shrink-0 text-muted-foreground transition-all group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-brand"
+                      aria-hidden="true"
+                    />
+                  </a>
+                ) : (
+                  <div
+                    className={cn(
+                      "overflow-hidden rounded-2xl border border-dashed border-line-strong bg-tint",
+                    )}
+                  >
                   {/* piece 1 — documentation (PDF) */}
                   <div className="flex items-start gap-3 p-5">
                     <FileText className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
@@ -245,19 +271,6 @@ export default function ProjectDetail() {
                               aria-hidden="true"
                             />
                           </button>
-                        ) : linkUrl ? (
-                          <a
-                            href={linkUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group/doc mt-1.5 inline-flex items-center gap-1.5 text-sm font-medium text-brand outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring/60"
-                          >
-                            {t.projects.openProject}
-                            <ArrowUpRight
-                              className="size-3.5 transition-transform group-hover/doc:-translate-y-0.5 group-hover/doc:translate-x-0.5"
-                              aria-hidden="true"
-                            />
-                          </a>
                         ) : (
                           <p className="mt-1.5 text-sm text-muted-foreground/75">{t.projects.pendingDoc}</p>
                         )}
@@ -288,6 +301,7 @@ export default function ProjectDetail() {
                     </a>
                   )}
                 </div>
+                )}
               </Reveal>
             </aside>
           </div>

@@ -42,7 +42,7 @@ export const fr: Dictionary = {
 
   about: {
     label: "À propos",
-    title: "Un technicien en formation, curieux de nature",
+    title: "Un électricien en formation",
     lead: "J'apprends le métier par la pratique : concevoir, monter et entretenir une installation électrique sûre.",
     paragraphs: [
       "Je suis en deuxième année de formation professionnelle intermédiaire en installations électriques et automatismes au Jesuïtes El Clot, à Barcelone. Chaque semaine, je combine théorie en classe et travaux pratiques à l'atelier.",
@@ -153,6 +153,7 @@ export const fr: Dictionary = {
     closeDoc: "Fermer la visionneuse du PDF",
     downloadCad: "Télécharger le fichier AutoCAD (.dwg)",
     openProject: "Ouvrir le projet",
+    projectLink: "Lien du projet",
     viewProject: "Voir la fiche technique",
     comingSoonBadge: "Bientôt disponible",
     comingSoonTitle: "D'autres projets arrivent",
@@ -400,6 +401,8 @@ export const fr: Dictionary = {
     note: "Un site personnel en construction permanente.",
     rights: "© 2026 Yovenzor Singh. Tous droits réservés.",
     backToTop: "Retour en haut",
+    explore: "Explorer",
+    more: "Plus",
   },
 
   common: {
