@@ -8,17 +8,18 @@ import { Reveal } from "@/components/Reveal";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { useLanguage, useT } from "@/i18n";
 import { projectCad, projectDocs, projectLinks } from "@/content/site";
+import { localePath } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 /**
- * Case-study page for one project: `/projects/:slug`. All copy comes from the
+ * Case-study page for one project: `/:lang/projects/:slug`. All copy comes from the
  * active dictionary, so the page is fully translated and sets the page title
  * for search engines and browser tabs.
  */
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const t = useT();
-  const { setPageTitle } = useLanguage();
+  const { lang, setPageTitle } = useLanguage();
   const project = t.projects.items.find((item) => item.slug === slug);
   const [docOpen, setDocOpen] = useState(false);
 
@@ -50,7 +51,7 @@ export default function ProjectDetail() {
 
   const backLink = (
     <Link
-      to="/#proyectos"
+      to={`${localePath(lang)}#proyectos`}
       className="group inline-flex items-center gap-2 rounded-full border border-line bg-tint px-4 py-2 text-sm text-muted-foreground outline-none transition-colors hover:border-line-strong hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
     >
       <ArrowLeft

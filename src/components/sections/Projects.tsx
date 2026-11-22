@@ -4,7 +4,8 @@ import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ProjectVisual } from "@/components/ProjectVisual";
-import { useT } from "@/i18n";
+import { useLanguage, useT } from "@/i18n";
+import { localePath } from "@/lib/locale";
 
 /**
  * Project gallery: case-study cards linking to dedicated detail pages.
@@ -12,6 +13,7 @@ import { useT } from "@/i18n";
  */
 export function Projects() {
   const t = useT();
+  const { lang } = useLanguage();
 
   return (
     <Section id="proyectos" tone="raised">
@@ -36,7 +38,7 @@ export function Projects() {
             className="h-full"
           >
             <Link
-              to={`/projects/${project.slug}`}
+              to={localePath(lang, `/projects/${project.slug}`)}
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card outline-none transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 focus-visible:ring-2 focus-visible:ring-ring/60"
             >
               <ProjectVisual

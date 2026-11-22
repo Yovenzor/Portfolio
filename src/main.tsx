@@ -1,12 +1,18 @@
 import { Toaster } from "@/components/ui/sonner";
-import { RequireAuth } from "@/components/RequireAuth";
 import { VlyToolbar } from "../vly-toolbar-readonly.tsx";
-import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { LanguageProvider } from "@/i18n";
-import { ConvexReactClient } from "convex/react";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
 import React, { StrictMode, useEffect, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router";
+import { DEFAULT_LOCALE, LOCALES, localePath } from "@/lib/locale";
 import "./index.css";
 
 // The landing page is the entry route: keep it eager so visitors see the site
@@ -15,8 +21,6 @@ import Landing from "./pages/Landing.tsx";
 
 // Secondary routes stay lazy for code splitting.
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail.tsx"));
-const AuthPage = lazy(() => import("./pages/Auth.tsx"));
-const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 // Language-neutral fallback shown only while a secondary route chunk loads.
@@ -91,6 +95,12 @@ const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 
 
+/** Old case-study links predate the language prefixes: send them to Spanish. */
+function LegacyProjectRedirect() {
+  const { slug } = useParams<{ slug: string }>();
+  return <Navigate to={localePath(DEFAULT_LOCALE, `/projects/${slug ?? ""}`)} replace />;
+}
+
 function RouteSyncer() {
   const location = useLocation();
   useEffect(() => {
@@ -121,33 +131,32 @@ createRoot(document.getElementById("root")!).render(
       <ToolbarErrorBoundary>
         <VlyToolbar />
       </ToolbarErrorBoundary>
-      <ConvexAuthProvider client={convex}>
+      <ConvexProvider client={convex}>
         <BrowserRouter>
           <LanguageProvider>
             <RouteSyncer />
             <Suspense fallback={<RouteLoading />}>
               <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/projects/:slug" element={<ProjectDetail />} />
-              <Route
-                path="/auth"
-                element={<AuthPage redirectAfterAuth="/dashboard" />}
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <RequireAuth>
-                    <Dashboard />
-                  </RequireAuth>
-                }
-              />
+                {/* One indexable URL per language: /es, /en, /fr, /pt, /de, /ar. */}
+                <Route path="/" element={<Navigate to={localePath(DEFAULT_LOCALE)} replace />} />
+                {LOCALES.map((code) => (
+                  <Route key={code} path={`/${code}`} element={<Landing />} />
+                ))}
+                {LOCALES.map((code) => (
+                  <Route
+                    key={`${code}-project`}
+                    path={`/${code}/projects/:slug`}
+                    element={<ProjectDetail />}
+                  />
+                ))}
+                <Route path="/projects/:slug" element={<LegacyProjectRedirect />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </LanguageProvider>
         </BrowserRouter>
         <Toaster />
-      </ConvexAuthProvider>
+      </ConvexProvider>
     </RootErrorBoundary>
   </StrictMode>,
 );

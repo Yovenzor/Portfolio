@@ -8,10 +8,8 @@ This project uses the following tech stack:
 - Tailwind v4 (for styling)
 - Shadcn UI (for UI components library)
 - Lucide Icons (for icons)
-- Convex (for backend & database)
-- Convex Auth (for authentication)
+- Convex (for the contact form backend & database)
 - Framer Motion (for animations)
-- Three js (for 3d models)
 
 All relevant files live in the 'src' directory.
 
@@ -30,88 +28,12 @@ The convex server has a separate set of environment variables that are accessibl
 Currently, these variables include auth-specific keys: JWKS, JWT_PRIVATE_KEY, and SITE_URL.
 
 
-# Using Authentication (Important!)
+# No accounts on the site
 
-You must follow these conventions when using authentication.
-
-## Auth is already set up.
-
-All convex authentication functions are already set up. The auth currently uses email OTP and anonymous users, but can support more.
-
-The email OTP configuration is defined in `src/convex/auth/emailOtp.ts`. DO NOT MODIFY THIS FILE.
-
-Also, DO NOT MODIFY THESE AUTH FILES: `src/convex/auth.config.ts` and `src/convex/auth.ts`.
-
-## Using Convex Auth on the backend
-
-On the `src/convex/users.ts` file, you can use the `getCurrentUser` function to get the current user's data.
-
-## Using Convex Auth on the frontend
-
-The `/auth` page is already set up to use auth. Navigate to `/auth` for all log in / sign up sequences.
-
-You MUST use this hook to get user data. Never do this yourself without the hook:
-```typescript
-import { useAuth } from "@/hooks/use-auth";
-
-const { isLoading, isAuthenticated, user, signIn, signOut } = useAuth();
-```
-
-## Protected Routes
-
-The starter `/dashboard` route is protected with `RequireAuth`. Extend that page
-for the product's authenticated experience, and reuse `RequireAuth` when adding
-another protected route — do NOT hand-roll a redirect to `/auth`, since landing
-on a bare sign-in form with no explanation of what was blocked is confusing.
-
-`RequireAuth` states the block on the page the visitor asked for and sends them
-to `/auth?returnTo=<current route>` when they choose to sign in, so they come
-back to it. Pass `title` and `description` to say what the page is:
-
-```tsx
-<Route
-  path="/dashboard"
-  element={
-    <RequireAuth
-      title="Sign in to view your dashboard"
-      description="Your projects and settings live here."
-    >
-      <Dashboard />
-    </RequireAuth>
-  }
-/>
-```
-
-Pass `redirectImmediately` for a route where bouncing straight to `/auth` really
-is better.
-
-## Auth Page
-
-The auth page is defined in `src/pages/Auth.tsx`. Send sign-in and sign-up actions
-to `/auth`.
-
-## Authorization
-
-You can perform authorization checks on the frontend and backend.
-
-On the frontend, you can use the `useAuth` hook to get the current user's data and authentication state.
-
-You should also be protecting queries, mutations, and actions at the base level, checking for authorization securely.
-
-## Adding a redirect after auth
-
-The `/auth` route in `src/main.tsx` redirects to `/dashboard` by default. If the
-product's main authenticated route is different, update `redirectAfterAuth` to
-that route. A validated same-origin `returnTo` query parameter takes priority so
-users can resume the protected page they originally requested. Never leave an
-authenticated product redirecting back to the public landing page.
-
-## Complete authenticated products
-
-When the requested product implies accounts, a workspace, a dashboard, or other
-signed-in functionality, the task is not complete with only a landing page and
-auth form. Build the main authenticated experience, protect its route, and verify
-that signing in reaches it.
+The portfolio is fully public: there is no sign-in, no dashboard and no user
+account surface. The Convex client only talks to the contact-form functions.
+The auth files under `src/convex/` belong to the backend template and are not
+reachable from the UI.
 
 # Frontend Conventions
 
@@ -295,16 +217,17 @@ When using convex, make sure:
 
 # Portfolio — Yovenzor Singh
 
-The marketing site at `/` is a personal portfolio (single scrolling page) plus
-case-study pages at `/projects/:slug`.
+The site is a personal portfolio (single scrolling page) plus case-study pages
+at `/:lang/projects/:slug`. Every language has its own indexable URL prefix
+(`/es`, `/en`, `/fr`, `/pt`, `/de`, `/ar`); the bare origin `/` redirects to
+`/es`. Old `/projects/:slug` links redirect to their Spanish URL.
 
 ## Editing content (no layout changes needed)
 
 - **Contact links, availability label, section list:** `src/content/site.ts`.
-  Set `links.email`, `links.linkedin`, `links.github`, `links.cv` to real
-  values — while they are `null` the site honestly shows "pending" cards
-  instead of fake links. For the CV, drop the file at `public/cv.pdf` and set
-  `links.cv: "/cv.pdf"`. Toggle `showAvailability` to show/hide the hero label.
+  Set `links.email`, `links.linkedin` and `links.cv` to real values. The CV is
+  served from `public/assets/Curriculum.pdf`. Toggle `showAvailability` to
+  show/hide the hero label.
 - **All copy (bio, education, skills, projects, form, footer…):**
   `src/i18n/translations/` — one file per language. `es.ts` is the source of
   truth: change it first, then mirror the change in `en/fr/pt/de/ar`. Every
@@ -329,11 +252,14 @@ case-study pages at `/projects/:slug`.
 
 ## Languages
 
-Spanish is the default; six languages are selectable from the navigation bar.
-The choice persists in `localStorage` (`ys-portfolio-lang`) and switching
-language updates the page in place (scroll position is kept). Arabic switches
-`<html dir="rtl">` and typography automatically. Metadata (`<title>`,
-description, Open Graph, `hreflang`) is updated per language by `src/lib/seo.ts`.
+Spanish is the default (`/es`, also the `x-default`); six languages are
+selectable from the navigation bar. **The URL is the source of truth**: the
+language lives in the path, so `/de` and `/en/projects/rebt-pro` are real pages
+that search engines can index. Switching language keeps the visitor on the same
+page. Arabic switches `<html dir="rtl">` and typography automatically. Metadata
+(`<title>`, description, canonical, `hreflang`, Open Graph, `og:url`) is
+rebuilt per language *and per page* by `src/lib/seo.ts`, using the helpers in
+`src/lib/locale.ts`.
 
 ## Deployment
 

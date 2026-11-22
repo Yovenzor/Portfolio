@@ -3,7 +3,8 @@ import handsArt from "@/assets/hands-dark.webp";
 import logoInk from "@/assets/logo-dark.png";
 import logoLight from "@/assets/logo-light.png";
 import { siteConfig } from "@/content/site";
-import { useT } from "@/i18n";
+import { useLanguage, useT } from "@/i18n";
+import { localePath } from "@/lib/locale";
 
 /**
  * Site footer: brand, section links and the two hands reaching toward each
@@ -13,6 +14,8 @@ import { useT } from "@/i18n";
  */
 export function Footer() {
   const t = useT();
+  const { lang } = useLanguage();
+  const sectionHref = (id: string) => `${localePath(lang)}#${id}`;
   const explore = siteConfig.sections.slice(0, 4);
   const more = siteConfig.sections.slice(4);
 
@@ -29,7 +32,7 @@ export function Footer() {
           {/* brand */}
           <div className="col-span-2 max-w-sm lg:col-span-1">
             <a
-              href="#inicio"
+              href={sectionHref("inicio")}
               className="inline-flex rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
             >
               <img src={logoLight} alt={siteConfig.name} className="h-11 w-auto dark:hidden" />
@@ -73,7 +76,7 @@ export function Footer() {
               {explore.map((section) => (
                 <li key={section.id}>
                   <a
-                    href={`#${section.id}`}
+                    href={sectionHref(section.id)}
                     className="text-sm text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
                   >
                     {t.nav[section.key]}
@@ -92,7 +95,7 @@ export function Footer() {
               {more.map((section) => (
                 <li key={section.id}>
                   <a
-                    href={`#${section.id}`}
+                    href={sectionHref(section.id)}
                     className="text-sm text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
                   >
                     {t.nav[section.key]}
@@ -108,7 +111,7 @@ export function Footer() {
           <p className="text-xs text-muted-foreground/80">{t.footer.rights}</p>
           <p className="text-xs text-muted-foreground/50">{t.footer.tagline}</p>
           <a
-            href="#inicio"
+            href={sectionHref("inicio")}
             className="group mt-2 inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60"
           >
             {t.footer.backToTop}

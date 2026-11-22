@@ -14,6 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { localePath, stripLocale } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 /**
@@ -26,7 +27,7 @@ export function Nav() {
   const { lang, setLang, isRTL } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
-  const onHome = location.pathname === "/";
+  const onHome = stripLocale(location.pathname) === "/";
 
   const [active, setActive] = useState<string>("inicio");
   const [scrolled, setScrolled] = useState(false);
@@ -85,7 +86,9 @@ export function Nav() {
     };
   }, [langOpen]);
 
-  const href = (id: string) => (onHome ? `#${id}` : `/#${id}`);
+  /* Links stay in the visitor's language, and point back to its home when the
+     visitor is on a case-study page. */
+  const href = (id: string) => (onHome ? `#${id}` : `${localePath(lang)}#${id}`);
 
   /* Staggered entrance for the rows of the mobile bottom sheet. */
   const riseStyle = (i: number): CSSProperties => ({

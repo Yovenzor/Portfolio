@@ -8,6 +8,16 @@
  */
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
+    /* The default language lives at its own URL, so the bare origin sends
+       crawlers and visitors to /es with a real server-side redirect instead of
+       a client-side one. */
+    if (url.pathname === "/") {
+      url.pathname = "/es";
+      return Response.redirect(url.toString(), 308);
+    }
+
     return env.ASSETS.fetch(request);
   },
 };

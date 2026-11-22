@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useLocation, useNavigate } from "react-router";
 import { es, type Dictionary } from "./translations/es";
 import { en } from "./translations/en";
 import { fr } from "./translations/fr";
@@ -14,8 +15,15 @@ import { pt } from "./translations/pt";
 import { de } from "./translations/de";
 import { ar } from "./translations/ar";
 import { applySeoMetadata } from "@/lib/seo";
+import {
+  DEFAULT_LOCALE,
+  localeFromPath,
+  localePath,
+  stripLocale,
+  type Locale,
+} from "@/lib/locale";
 
-export type Locale = "es" | "en" | "fr" | "pt" | "de" | "ar";
+export type { Locale };
 
 export const LANGUAGES: { code: Locale; label: string; dir: "ltr" | "rtl" }[] = [
   { code: "es", label: "Español", dir: "ltr" },
@@ -27,11 +35,6 @@ export const LANGUAGES: { code: Locale; label: string; dir: "ltr" | "rtl" }[] = 
 ];
 
 const DICTIONARIES: Record<Locale, Dictionary> = { es, en, fr, pt, de, ar };
-const STORAGE_KEY = "ys-portfolio-lang";
-
-function isLocale(value: string | null): value is Locale {
-  return value !== null && value in DICTIONARIES;
-}
 
 /** Deep-merge the active dictionary over Spanish so any missing key falls back. */
 function mergeWithFallback(base: unknown, override: unknown): unknown {
@@ -59,23 +62,23 @@ interface LanguageContextValue {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Locale>(() => {
-    if (typeof window === "undefined") return "es";
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    return isLocale(saved) ? saved : "es";
-  });
+  const location = useLocation();
+  const navigate = useNavigate();
   const [pageTitle, setPageTitle] = useState<string | null>(null);
 
+  /* The URL is the single source of truth for the language, so each of the six
+     languages is a real, indexable page. */
+  const lang = localeFromPath(location.pathname) ?? DEFAULT_LOCALE;
+  const path = stripLocale(location.pathname);
   const dir = LANGUAGES.find((l) => l.code === lang)?.dir ?? "ltr";
 
-  const setLang = useCallback((next: Locale) => {
-    setLangState(next);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* storage unavailable — language still applies for this visit */
-    }
-  }, []);
+  const setLang = useCallback(
+    (next: Locale) => {
+      if (next === lang) return;
+      navigate(`${localePath(next, path)}${location.search}${location.hash}`);
+    },
+    [lang, path, location.search, location.hash, navigate],
+  );
 
   const t = useMemo(
     () => (lang === "es" ? es : mergeWithFallback(es, DICTIONARIES[lang]) as Dictionary),
@@ -89,8 +92,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       ogLocale: t.meta.ogLocale,
       title: pageTitle ? `${pageTitle} · Yovenzor Singh` : t.meta.title,
       description: t.meta.description,
+      path,
     });
-  }, [lang, dir, pageTitle, t.meta.ogLocale, t.meta.title, t.meta.description]);
+  }, [lang, dir, pageTitle, path, t.meta.ogLocale, t.meta.title, t.meta.description]);
 
   const value = useMemo(
     () => ({ lang, dir, isRTL: dir === "rtl", setLang, t, setPageTitle }),

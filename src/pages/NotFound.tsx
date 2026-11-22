@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { useT } from "@/i18n";
+import { useLanguage, useT } from "@/i18n";
+import { localePath } from "@/lib/locale";
 
 export default function NotFound() {
   const t = useT();
+  const { lang } = useLanguage();
 
   return (
     <motion.div
@@ -20,7 +22,7 @@ export default function NotFound() {
         </h1>
         <p className="mt-3 max-w-md text-muted-foreground">{t.common.notFoundText}</p>
         <Link
-          to="/"
+          to={localePath(lang)}
           className="mt-8 inline-flex h-11 items-center gap-2 rounded-full bg-brand px-6 text-sm font-semibold text-brand-foreground outline-none transition-all hover:brightness-105 focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           {t.common.backHome}

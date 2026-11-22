@@ -1,26 +1,32 @@
 /**
  * Per-language search-engine and social metadata.
  *
- * Updates <title>, description, canonical, hreflang alternates and Open Graph
- * tags in place — no page reload when the visitor changes language.
+ * Each language has its own URL (`/es`, `/en`, …), so the canonical link, the
+ * `hreflang` alternates and `og:url` all point at language- and page-specific
+ * URLs instead of the bare origin. Everything is updated in place when the
+ * visitor switches language or opens a project — no page reload.
  */
 
+import { DEFAULT_LOCALE, LOCALES, absoluteUrl, type Locale } from "@/lib/locale";
+
 export interface SeoInput {
-  lang: string;
+  lang: Locale;
   dir: "ltr" | "rtl";
   ogLocale: string;
   title: string;
   description: string;
+  /** Locale-independent path: "/" or "/projects/rebt-pro". */
+  path: string;
 }
 
-const SITE_URL = "https://yovenzor.freebuff.page/";
-const LOCALES: Record<string, string> = {
-  es: "es",
-  en: "en",
-  fr: "fr",
+/** Open Graph locales, used when a dictionary does not provide its own. */
+const OG_LOCALES: Record<Locale, string> = {
+  es: "es_ES",
+  en: "en_GB",
+  fr: "fr_FR",
   pt: "pt_PT",
   de: "de_DE",
-  ar: "ar",
+  ar: "ar_AR",
 };
 
 function setMeta(selector: string, attr: "name" | "property", key: string, content: string) {
@@ -47,7 +53,14 @@ function setLink(rel: string, href: string, hreflang?: string) {
   el.setAttribute("href", href);
 }
 
-export function applySeoMetadata({ lang, dir, ogLocale, title, description }: SeoInput) {
+export function applySeoMetadata({
+  lang,
+  dir,
+  ogLocale,
+  title,
+  description,
+  path,
+}: SeoInput) {
   if (typeof document === "undefined") return;
 
   document.documentElement.lang = lang;
@@ -55,17 +68,19 @@ export function applySeoMetadata({ lang, dir, ogLocale, title, description }: Se
 
   document.title = title;
 
+  const canonical = absoluteUrl(lang, path);
+
   setMeta('meta[name="description"]', "name", "description", description);
   setMeta('meta[property="og:title"]', "property", "og:title", title);
   setMeta('meta[property="og:description"]', "property", "og:description", description);
-  setMeta('meta[property="og:locale"]', "property", "og:locale", LOCALES[lang] ?? ogLocale);
-  setMeta('meta[property="og:url"]', "property", "og:url", SITE_URL);
+  setMeta('meta[property="og:locale"]', "property", "og:locale", OG_LOCALES[lang] ?? ogLocale);
+  setMeta('meta[property="og:url"]', "property", "og:url", canonical);
   setMeta('meta[name="twitter:title"]', "name", "twitter:title", title);
   setMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
 
-  setLink("canonical", SITE_URL);
-  for (const code of Object.keys(LOCALES)) {
-    setLink("alternate", SITE_URL, code);
+  setLink("canonical", canonical);
+  for (const code of LOCALES) {
+    setLink("alternate", absoluteUrl(code, path), code);
   }
-  setLink("alternate", SITE_URL, "x-default");
+  setLink("alternate", absoluteUrl(DEFAULT_LOCALE, path), "x-default");
 }
