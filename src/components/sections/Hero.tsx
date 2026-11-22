@@ -35,8 +35,7 @@ export function Hero() {
       className="relative scroll-mt-20 overflow-hidden pt-28 pb-16 md:scroll-mt-24 md:pt-36 md:pb-24"
       aria-label={t.nav.home}
     >
-      {/* warm backdrop: grid + floating color orbs */}
-      <div className="tech-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+      {/* warm backdrop: floating color orbs */}
       <div className="orb orb-coral -top-24 -start-32 size-[26rem] opacity-70" aria-hidden="true" />
       <div className="orb orb-honey top-40 end-[-10rem] size-[22rem] opacity-60" aria-hidden="true" />
       <div className="orb orb-teal bottom-[-12rem] start-1/3 size-[20rem] opacity-40" aria-hidden="true" />
